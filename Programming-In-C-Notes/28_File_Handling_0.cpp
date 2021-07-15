@@ -7,7 +7,7 @@ int main( )
 {
     //Decleration of file
     FILE *fp ;
-
+																																									
     char ch ;
     /*
         To open the file we have called the function fopen( ).

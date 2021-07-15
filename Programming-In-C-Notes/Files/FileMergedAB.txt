@@ -1,0 +1,8 @@
+Q.1) Hello How are you?
+Ans: Hi, I am fine
+Q.2) What are you doing?
+Ans: I am reading programming in C
+Q.3) Where are you from?
+Ans: I am from Gaya, Bihar
+Ans: Oh nice, I am from Patna, Bihar
+    And Where are you from ?

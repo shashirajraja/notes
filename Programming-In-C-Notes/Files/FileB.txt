@@ -1,0 +1,3 @@
+Ans: Hi, I am fine
+Ans: I am reading programming in C
+Ans: I am from Gaya, Bihar

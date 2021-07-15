@@ -1,0 +1,3 @@
+Q.1) Hello How are you?
+Q.2) What are you doing?
+Q.3) Where are you from?
