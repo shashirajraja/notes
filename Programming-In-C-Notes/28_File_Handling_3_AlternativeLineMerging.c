@@ -49,7 +49,7 @@ int main( )
 		if(ch != EOF)
 			fputc('\n',fileMerged);
 		
-		if(ch == EOF && ch == EOF)
+		if(ch1 == EOF && ch == EOF)
 			break;
    	
 	}
