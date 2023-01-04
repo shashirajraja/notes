@@ -16,31 +16,19 @@ This File contains a list of tips and tricks for competetive data structures and
 - slow and fast pointer, return the slow node (fast => twice of slow)
 #### Q) Reverse LinkedList 
 ```
-while(nxt){ 
-  curr->next = prev;
-  prev = curr;
-  curr = nxt;
-  nxt = nxt->next;
-} 
-if(prev) {
-  curr->next = prev;
-  prev = curr;
-}
-```
-#### Q) Check if a LinkedList is Pallendrome 
- - In O(n) space Complexity: First make a new reversed list and then compare both
-```
-ListNode* reverse(ListNode* head) {
+  ListNode* reverse(ListNode* head) {
      ListNode *curr = head, *prev = NULL, *temp = NULL;
-      while(curr) {
-          temp = new ListNode(curr->val);
-          temp->next = prev;
-          prev = temp;
-          curr = curr->next;
+     while(curr) {
+          temp = curr->next;
+          curr->next = prev;
+          prev = curr;
+          curr = temp;
       }
       return prev;
-}
+  }
 ```
+#### Q) Check if a LinkedList is Pallendrome 
+- In O(n) space Complexity: First make a new reversed list and then compare both
 - In O(1) space complexity: reverse the half of the list by checking with fast pointer approach, and then compare
 #### Q) Remove elements with given value from the linkedList
 - Iterative way: 
@@ -75,3 +63,4 @@ while(temp) {
         return head;
     }
 ```
+#### Q) Remove Duplicate LinkedList: Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
