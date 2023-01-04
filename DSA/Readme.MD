@@ -81,3 +81,88 @@ while(temp) {
         return -1;
     }
 ```
+#### Q) Level order Traversal of a Binary Tree [BFS]
+```
+  unordered_map<int,vector<int>> LevelOrderTraversal(TreeNode* root) { //BFS
+        queue<pair<TreeNode*,int>> q;
+        unordered_map<int, vector<int>> um;
+        vector<double> res;
+        int depth = 0;
+        q.push({root, depth});
+        
+        while(!q.empty()) {
+            TreeNode* topNode = q.front().first;
+            depth = q.front().second;
+            um[depth].push_back(topNode->val);
+            q.pop();
+            if(topNode->left) {
+                q.push({topNode->left, depth+1});
+            }
+            
+            if(topNode->right) {
+                q.push({topNode->right, depth+1});
+            }
+        }
+        return um;
+    }
+```
+
+#### Q) [Minimum depth of a Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
+- Using queue BFS
+```
+  int minDepth(TreeNode* root) {
+        if(root == NULL)
+            return 0;
+        
+        return bfs(root,0); 
+   }
+   
+  int bfs(TreeNode* root, int depth) {
+        queue<TreeNode*> q;
+        int n = 0, res = INT_MAX;
+        q.push(root);
+        
+        while(!q.empty()) {
+            depth++;
+            n = q.size();
+            for(int i = 0; i < n ;i++) {
+                TreeNode* top = q.front();
+                q.pop();
+                if(top->left == NULL && top->right == NULL) {
+                    res = min(res, depth);
+                }
+                if(top->left)
+                    q.push(top->left);
+                if(top->right)
+                    q.push(top->right);
+            }
+        }
+        return res;
+    }
+```
+
+- Using recursion
+```
+  int minDepth(TreeNode* root) {
+        if(root == NULL) return 0;
+        if(root->left && root->right)
+            return min(1 + minDepth(root->left), 1 + minDepth(root->right));
+        else if(root->left) 
+            return 1 + minDepth(root->left);
+        return 1 + minDepth(root->right);
+
+    }
+```
+- BFS Using recursion
+```
+int bfs(TreeNode* root, int depth) {
+        if(root == NULL)
+            return INT_MAX;
+        
+        if(root->left == NULL && root->right == NULL)
+            return depth+1;
+        
+        return min(bfs(root->left, depth+1), bfs(root->right, depth+1));
+        
+    }
+```
