@@ -4,7 +4,7 @@ import java.sql.Connection; //STEP-0: update the module-info.java with "requires
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class JDBCDriverAndConnection {
+public class A_JDBCDriverAndConnection {
 
 	public static void main(String[] args) {
 
