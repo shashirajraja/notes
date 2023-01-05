@@ -166,3 +166,72 @@ int bfs(TreeNode* root, int depth) {
         
     }
 ```
+
+#### [Minimum Depth of a Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/description/)
+- Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+- Note: A leaf is a node with no children.
+- Using Recursion: 
+```
+   int minDepth(TreeNode* root) {
+        if(root == NULL) return 0;
+        if(root->left == NULL && root->right == NULL) return 1;
+        if(root->left == NULL) return 1 + minDepth(root->right);
+        if(root->right == NULL) return 1 + minDepth(root->left); 
+        return 1 + min(minDepth(root->left) , minDepth(root->right));
+    }
+```
+#### [Same Binary Tree](https://leetcode.com/problems/same-tree/)
+- Given the roots of two binary trees p and q, write a function to check if they are the same or not.
+- Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+```
+   bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(p == NULL && q == NULL) return true;
+        if(p == NULL || q == NULL) return false;
+        if(p->val != q->val) return false;
+        
+        return (isSameTree(p->left, q->left) && isSameTree(p->right, q->right));
+    }
+```
+
+#### [Path Sum](https://leetcode.com/problems/path-sum/)
+- Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+- Using recursion
+```
+   bool hasPathSum(TreeNode* root, int targetSum) {
+        if(root == NULL) return false;
+        if(root->left == NULL && root->right == NULL) return targetSum == root->val;
+
+        return hasPathSum(root->left, targetSum - root->val) || hasPathSum(root->right, targetSum - root->val);
+    }
+```
+- It can be solved using dfs or bfs also i.e using stack or queue
+#### [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+- Given the root of a binary tree, return its maximum depth.
+- A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+- - Using Recursion
+```
+```
+- - Using DFS (Stack)
+```
+   int maxDepth(TreeNode* root) {
+        if(root == NULL) return 0;
+        
+        stack<pair<TreeNode*, int>> st;
+        st.push({root, 0});
+        int res = 0;
+        while(!st.empty()) {
+            TreeNode* node = st.top().first;
+            int depth = st.top().second;
+            st.pop();
+
+            //check leaf node
+            if(node->left == NULL && node->right == NULL) res = max(res, 1 + depth);
+
+            
+            if(node->left) st.push({node->left, depth+1});
+            if(node->right) st.push({node->right, depth+1});
+
+        }
+        return res;
+    }
+```
