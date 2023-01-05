@@ -58,6 +58,8 @@ public class G_ClosingConnection { //See Step-8
 			 */
 			connection.close();
 			statement.close();
+			rs.close();
+			
 
 		} catch (SQLException e) {
 			System.out.println("Connection Failed: " + e.getMessage());
