@@ -241,3 +241,40 @@ int bfs(TreeNode* root, int depth) {
         return res;
     }
 ```
+#### [543. Diameter of Binary Tree**](https://leetcode.com/problems/diameter-of-binary-tree/description/)
+- Given the root of a binary tree, return the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root. The length of a path between two nodes is represented by the number of edges between them.
+	- Using Recursion
+```
+   int diameterOfBinaryTree(TreeNode* root) {
+        if(root == NULL) return 0;
+        int lh = height(root->left);
+        int rh = height(root->right);
+        return max(lh+rh, max(diameterOfBinaryTree(root->left), diameterOfBinaryTree(root->right)));
+    }
+    
+    int height(TreeNode* root) {
+        if(root == NULL) return 0;
+        return 1 + max(height(root->left), height(root->right));
+    }
+```
+	- Using Stack DFS
+```
+   int diameterOfBinaryTree(TreeNode* root) {
+        if(root == NULL) return 0;
+        if(root->left == NULL && root->right == NULL) return 0;
+        stack<TreeNode*> st;
+        st.push(root);
+        int res = 1;
+        while(!st.empty()) {
+            TreeNode* curr = st.top();
+            int lh = height(curr->left);
+            int rh = height(curr->right);
+            res = max(res, lh + rh);
+            st.pop();
+            if(curr->left) st.push(curr->left);
+            if(curr->right) st.push(curr->right);
+        }
+
+        return res;
+    }
+```
