@@ -257,7 +257,7 @@ int bfs(TreeNode* root, int depth) {
         return 1 + max(height(root->left), height(root->right));
     }
 ```
-	- Using Stack DFS
+	- Using Stack [DFS Preorder]
 ```
    int diameterOfBinaryTree(TreeNode* root) {
         if(root == NULL) return 0;
@@ -276,5 +276,25 @@ int bfs(TreeNode* root, int depth) {
         }
 
         return res;
+    }
+```
+#### Check if Two Binary Tree are identical
+```
+   bool isIdentical(TreeNode* root, TreeNode* subRoot) {
+        if(root == NULL && subRoot == NULL) return true;
+        if(subRoot == NULL || root == NULL) return false;
+        bool left = isIdentical(root->left, subRoot->left);
+        bool right = isIdentical(root->right, subRoot->right);
+        
+        return  (root->val == subRoot->val) && left && right;
+    }
+```
+
+### [572. Is Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/description/)
+- Note: check if the two tree is identical at current or left or from right node
+```
+   bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+       if(root == NULL) return subRoot == NULL;
+       return isIdentical(root, subRoot) || isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
     }
 ```
