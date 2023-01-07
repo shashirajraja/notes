@@ -298,3 +298,13 @@ int bfs(TreeNode* root, int depth) {
        return isIdentical(root, subRoot) || isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
     }
 ```
+#### [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)
+```
+  TreeNode* invertTree(TreeNode* root) {
+        if(root == NULL) return root;
+        TreeNode* left = root->left;
+        root->left = invertTree(root->right);
+        root->right = invertTree(left);
+        return root;
+    }
+```
