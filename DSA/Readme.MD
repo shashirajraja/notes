@@ -12,6 +12,29 @@ This File contains a list of tips and tricks for competetive data structures and
 - max_so_far
 #### Q) LinkedList Cycle Detection 
 - Use slow and fast pointer, where fast is running twice as slow. If they are able to meet then cycle is there
+#### Q) [LinkedList Cycle Detection and Find Node](https://leetcode.com/problems/linked-list-cycle-ii/description/)
+- Use Slow and fast pointer to detect the cycle and continue till fast != slow
+- Initialize the fast pointer to head again
+- Now again move both the pointer equally, return the node where both pointer equals
+```
+ListNode *detectCycle(ListNode *head) {
+        if(head == NULL || head->next == NULL) return NULL;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* prev = head;
+        do{
+            slow = slow->next;
+            fast = fast->next->next;
+        } while(fast && fast->next && slow != fast);
+
+        fast = head;
+        while(slow && slow != fast) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        return slow;
+    }
+```
 #### Q) Middle node of a linkedList
 - slow and fast pointer, return the slow node (fast => twice of slow)
 #### Q) Reverse LinkedList 
@@ -27,6 +50,8 @@ This File contains a list of tips and tricks for competetive data structures and
       return prev;
   }
 ```
+#### Q) [Reverse LinkedList II](https://leetcode.com/problems/reverse-linked-list-ii/)
+-
 #### Q) Check if a LinkedList is Pallendrome 
 - In O(n) space Complexity: First make a new reversed list and then compare both
 - In O(1) space complexity: reverse the half of the list by checking with fast pointer approach, and then compare
