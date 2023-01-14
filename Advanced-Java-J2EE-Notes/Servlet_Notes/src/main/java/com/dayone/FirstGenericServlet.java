@@ -37,8 +37,9 @@ public class FirstGenericServlet extends GenericServlet{
 		res.setContentType("text/html"); //Set the content type of the web page
 		PrintWriter pw = res.getWriter(); //Get the pen to write on the web page
 		pw.println("Hello Guys!!!"); // prints anything on the web page
-		pw.println("<h1>Welcome to Bitter Code</h1>");
+		pw.println("<h1>Welcome to Bitter Code");
 		pw.println("<a href='index.html'><button>Go Back</button></a>");
 		
+		req.getParameter("keyName");
 	}
 }
