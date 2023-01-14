@@ -12,6 +12,29 @@ This File contains a list of tips and tricks for competetive data structures and
 - max_so_far
 #### Q) LinkedList Cycle Detection 
 - Use slow and fast pointer, where fast is running twice as slow. If they are able to meet then cycle is there
+#### Q) [LinkedList Cycle Detection and Find Node](https://leetcode.com/problems/linked-list-cycle-ii/description/)
+- Use Slow and fast pointer to detect the cycle and continue till fast != slow
+- Initialize the fast pointer to head again
+- Now again move both the pointer equally, return the node where both pointer equals
+```
+ListNode *detectCycle(ListNode *head) {
+        if(head == NULL || head->next == NULL) return NULL;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* prev = head;
+        do{
+            slow = slow->next;
+            fast = fast->next->next;
+        } while(fast && fast->next && slow != fast);
+
+        fast = head;
+        while(slow && slow != fast) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        return slow;
+    }
+```
 #### Q) Middle node of a linkedList
 - slow and fast pointer, return the slow node (fast => twice of slow)
 #### Q) Reverse LinkedList 
@@ -27,6 +50,8 @@ This File contains a list of tips and tricks for competetive data structures and
       return prev;
   }
 ```
+#### Q) [Reverse LinkedList II](https://leetcode.com/problems/reverse-linked-list-ii/)
+-
 #### Q) Check if a LinkedList is Pallendrome 
 - In O(n) space Complexity: First make a new reversed list and then compare both
 - In O(1) space complexity: reverse the half of the list by checking with fast pointer approach, and then compare
@@ -239,5 +264,72 @@ int bfs(TreeNode* root, int depth) {
 
         }
         return res;
+    }
+```
+#### [543. Diameter of Binary Tree**](https://leetcode.com/problems/diameter-of-binary-tree/description/)
+- Given the root of a binary tree, return the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root. The length of a path between two nodes is represented by the number of edges between them.
+	- Using Recursion
+```
+   int diameterOfBinaryTree(TreeNode* root) {
+        if(root == NULL) return 0;
+        int lh = height(root->left);
+        int rh = height(root->right);
+        return max(lh+rh, max(diameterOfBinaryTree(root->left), diameterOfBinaryTree(root->right)));
+    }
+    
+    int height(TreeNode* root) {
+        if(root == NULL) return 0;
+        return 1 + max(height(root->left), height(root->right));
+    }
+```
+	- Using Stack [DFS Preorder]
+```
+   int diameterOfBinaryTree(TreeNode* root) {
+        if(root == NULL) return 0;
+        if(root->left == NULL && root->right == NULL) return 0;
+        stack<TreeNode*> st;
+        st.push(root);
+        int res = 1;
+        while(!st.empty()) {
+            TreeNode* curr = st.top();
+            int lh = height(curr->left);
+            int rh = height(curr->right);
+            res = max(res, lh + rh);
+            st.pop();
+            if(curr->left) st.push(curr->left);
+            if(curr->right) st.push(curr->right);
+        }
+
+        return res;
+    }
+```
+#### Check if Two Binary Tree are identical
+```
+   bool isIdentical(TreeNode* root, TreeNode* subRoot) {
+        if(root == NULL && subRoot == NULL) return true;
+        if(subRoot == NULL || root == NULL) return false;
+        bool left = isIdentical(root->left, subRoot->left);
+        bool right = isIdentical(root->right, subRoot->right);
+        
+        return  (root->val == subRoot->val) && left && right;
+    }
+```
+
+### [572. Is Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/description/)
+- Note: check if the two tree is identical at current or left or from right node
+```
+   bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+       if(root == NULL) return subRoot == NULL;
+       return isIdentical(root, subRoot) || isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
+    }
+```
+#### [226. Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/description/)
+```
+  TreeNode* invertTree(TreeNode* root) {
+        if(root == NULL) return root;
+        TreeNode* left = root->left;
+        root->left = invertTree(root->right);
+        root->right = invertTree(left);
+        return root;
     }
 ```
