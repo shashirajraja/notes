@@ -14,6 +14,26 @@
 	</welcome-file-list>
 	
 	<servlet>
+		<servlet-name>UserHome</servlet-name>
+		<servlet-class>com.dayfour.UserHome</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UserHome</servlet-name>
+		<url-pattern>/user</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UserDetails</servlet-name>
+		<servlet-class>com.dayfour.UserDetails</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UserDetails</servlet-name>
+		<url-pattern>/userDetails</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>FirstServlet</servlet-name>
 		<servlet-class>com.dayone.FirstGenericServlet</servlet-class>
 	</servlet>

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 import javax.servlet.GenericServlet;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -87,8 +88,15 @@ public class LoginServletGetParams extends GenericServlet{
 			//login success
 			pw.println("<h1>User Login Success</h1>");
 			
+			
+			//Setting the attribute to ServletRequest can only be accessible to next servlets
+			req.setAttribute("myEmail", email);
+			
+			ServletContext sc = req.getServletContext();
+			sc.setAttribute("myEmail", email);
+			
 			//Request Dispatcher
-			RequestDispatcher rd = req.getRequestDispatcher("welcome.html");
+			RequestDispatcher rd = req.getRequestDispatcher("/user");
 			
 			rd.forward(req, res);
 		} else {
