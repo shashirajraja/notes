@@ -34,6 +34,16 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>FetchAllUsers</servlet-name>
+		<servlet-class>com.dayfive.FetchAllUsers</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>FetchAllUsers</servlet-name>
+		<url-pattern>/users</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>UserLogout</servlet-name>
 		<servlet-class>com.dayfour.UserLogout</servlet-class>
 	</servlet>
