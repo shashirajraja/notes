@@ -34,6 +34,16 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>UserLogout</servlet-name>
+		<servlet-class>com.dayfour.UserLogout</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UserLogout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>FirstServlet</servlet-name>
 		<servlet-class>com.dayone.FirstGenericServlet</servlet-class>
 	</servlet>
