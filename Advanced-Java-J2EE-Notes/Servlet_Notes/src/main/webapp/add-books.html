@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>First Servlet Program</title>
+<style>
+table, th, td {
+  border: 1px solid;
+}
+</style>
+</head>
+<header>
+	<a href="hello"><button>Go to Bitter Code</button></a> &nbsp;
+   
+   <a href="client"><button>Go to Our Client Page [ServletContext]</button></a> &nbsp;
+   
+   <a href="refral"><button>Go to Our Refrals Page [ServletConfig]</button></a> &nbsp;
+   
+   <a href="login.html"><button>User Login</button></a>&nbsp;
+   
+   <a href="user"><button>User Home</button></a>&nbsp;
+   
+   <a href="userDetails"><button>User Details</button></a>&nbsp;
+   
+   <a href="logout"><button>Logout</button></a>&nbsp;<br><br>
+   
+   <a href="users"><button>Show All Registered Users List</button></a>&nbsp;<br><br>
+   <hr/>
+   <a href="books"><button>Show Book Form</button></a>
+</header>
+<body>
+   <br/>
+   <div style="border:2px solid red; margin-left:30%; margin-right:30%; padding:10px; text-align:center;">
+   
+	   <form method="post" action="books">
+	  		<h1>Enter the book details to Add</h1>
+	   		Book Name: <input type="text" name="bname" placeholder="Enter Book Name"/><br><br>
+	   		Book Author: <input type="text" name="author" placeholder="Enter Author Name"/><br><br>
+	   		Quantity Avl: <input type="number" name="available" placeholder="Enter the quantity available"/><br><br>
+	   		<input type="submit" value="Add Book To the DB"/>
+	   </form>
+	  
+   </div>
+   
+</body>
+</html>
