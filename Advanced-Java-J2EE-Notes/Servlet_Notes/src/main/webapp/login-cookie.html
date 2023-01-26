@@ -2,12 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>First Servlet Program</title>
-<style>
-table, th, td {
-  border: 1px solid;
-}
-</style>
+<title>User Login</title>
 </head>
 <body>
    <a href="hello"><button>Go to Bitter Code</button></a> &nbsp;
@@ -19,17 +14,18 @@ table, th, td {
    <a href="login.html"><button>User Login</button></a>&nbsp;
    
    <a href="user"><button>User Home</button></a>&nbsp;
-   
    <a href="userDetails"><button>User Details</button></a>&nbsp;
-   
    <a href="logout"><button>Logout</button></a>&nbsp;<br><br>
-   
    <a href="users"><button>Show All Registered Users List</button></a>&nbsp;<br><br>
-   <hr/>
-   <a href="add-books.html"><button>Add Book</button></a>&nbsp;
-   <a href="first"><button>Url Rerouting</button></a>&nbsp;
-   <a href="login-cookie.html"><button>Login With Cookie</button></a>&nbsp;
-   <a href="userHomeWithCookie"><button>User Home With Cookie</button></a>&nbsp;
-   <hr/>
+  
+   
+   <h1>Please Login First to Continue</h1>
+   <br>
+   <form method="get" action="loginWithCookie">
+   	Email : <input type="email" name="email" /><br><br>
+   	Password: <input type="password" name="pwd" /><br><br>
+   	<input type="hidden" name="forwardedFrom" value="login-cookie.html"/><!-- Hidden form field -->
+   	<input type="submit" value="Login" />
+   </form>
 </body>
 </html>
