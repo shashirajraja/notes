@@ -14,6 +14,26 @@
 	</welcome-file-list>
 	
 	<servlet>
+		<servlet-name>RouteToMe</servlet-name>
+		<servlet-class>com.dayseven.sendRedirect.RouteToMe</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>RouteToMe</servlet-name>
+		<url-pattern>/second</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UrlRerouting</servlet-name>
+		<servlet-class>com.dayseven.sendRedirect.UrlRerouting</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UrlRerouting</servlet-name>
+		<url-pattern>/first</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>AddBookHttpServlet</servlet-name>
 		<servlet-class>com.http.daysix.servlets.AddBookHttpServlet</servlet-class>
 	</servlet>
