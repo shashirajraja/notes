@@ -6,16 +6,12 @@
 <meta charset="UTF-8">
 <title>Headers</title>
 <style>
-footer {
-    /* clear: both;
-    position: relative;
-    height: 200px;
-    margin-top: -200px; */
-    
-   position:absolute;
+footer {   
+   position:fixed;
    bottom:0;
    width:100%;
    height:60px;   /* Height of the footer */
+   margin-top:-60px;
    background:#6cf;
 }
 </style>

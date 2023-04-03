@@ -17,8 +17,12 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav font-weight-bold">
-				<li class="nav-item mr-2"><a class="nav-link" href="index.jsp">Home
-				</a></li>
+				<li class="nav-item mr-2">
+				<a class="nav-link" href="index.jsp">Home</a></li>
+				<li class="nav-item mr-2">
+				<a class="nav-link" href="courses">Available Courses</a></li>
+				<li class="nav-item mr-2">
+				<a class="nav-link" href="errorThrower.jsp">Error</a></li>
 				<li class="nav-item mr-2"><a class="nav-link" href="login.jsp">Login</a></li>
 				<li class="nav-item mr-2"><a class="nav-link" href="#">SignUp</a></li>
 				<li class="nav-item mr-2"><a class="nav-link" href="logout.jsp">Logout</a></li>

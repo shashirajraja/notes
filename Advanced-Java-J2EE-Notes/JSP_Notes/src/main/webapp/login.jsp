@@ -50,15 +50,18 @@
 		email = rs.getString("email");
 		String mob = rs.getString("mob");
 		String gender = rs.getString("gender");
+		
+		//Set the attributes in the session
 		session.setAttribute("isLoggedIn", true);
 		session.setAttribute("name", name);
-		response.sendRedirect("login.jsp");
+		
+		response.sendRedirect("index.jsp");
 	} else {
 		session.setAttribute("isLoggedIn", false);
 	%>
 	<div class="text-center">
-		<label class="text-danger font-weight-bold mt-1">Invalid
-			Credentials, Try Again!!</label>
+		<label class="text-danger font-weight-bold mt-1">
+		Invalid Credentials, Try Again!!</label>
 	</div>
 	<%@ include file="loginForm.jsp"%>
 	<%
